@@ -1,0 +1,43 @@
+@model List<m_cls_Image>
+
+@{
+	ViewData["Title"] = "List of Image";
+}
+
+<div>
+    <div><h1 class="display-4">Image Upload and Retrieve</h1></div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+    <div><a asp-controller="Image" asp-action="Create" class="linkbutton">Create New</a></div>
+    <div>&nbsp;</div>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Image ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Image Name</th>
+                    <th scope="col" style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@item.ImageId</td>
+                        <td>@item.Title</td>
+                        <td>@item.ImageName</td>
+                        <td>
+                            <a asp-controller="Image" asp-action="Edit" asp-route-id="@item.ImageId" class="linkbutton">Edit</a> | 
+                            <a asp-controller="Image" asp-action="Details" asp-route-id="@item.ImageId" class="linkbutton">Details</a> | 
+                            <a asp-controller="Image" asp-action="Delete" asp-route-id="@item.ImageId" class="linkbutton">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

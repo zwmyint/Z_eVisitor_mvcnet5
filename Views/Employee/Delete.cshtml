@@ -1,0 +1,94 @@
+@model m_cls_Employee
+
+@{
+	ViewData["Title"] = "Delete Emp:";
+}
+
+<div>
+    <div><h1 class="display-4">Delete an Employee</h1></div>
+    <div>
+        <h3 class="message">
+            Warning: You are about to delete an employee record!
+        </h3>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+        
+        <form asp-controller="Employee" asp-action="Delete" method="post">
+
+            <div class="row">
+                <div class="col-12" style="text-align: left;">
+                    <label asp-for="EmployeeID"></label>
+                    <span> : @Model.EmployeeID</span>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="FirstName"></label> : 
+                    <label>@Model.FirstName</label>
+                </div>
+                <div class="col-6">
+                    <label asp-for="LastName"></label> : 
+                    <label>@Model.LastName</label>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="Title"></label> : 
+                    <label>@Model.Title</label>
+                </div>
+                <div class="col-6">
+                    <label asp-for="BirthDate"></label> : 
+                    <label>@Model.BirthDate.ToString("dd MMMM yyyy")</label>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="HireDate"></label> : 
+                    <label>@Model.HireDate.ToString("dd MMMM yyyy")</label>
+                </div>
+                <div class="col-6">
+                    <label asp-for="Country"></label> : 
+                    <label>@Model.Country</label>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label asp-for="Notes"></label> : 
+                    <label>@Model.Notes</label>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-12" style="text-align: center;">
+                    <button type="submit" class="btn btn-light">Delete</button>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div>&nbsp;</div>
+
+    <div>
+        <partial name="_EmpBacktoList" />
+    </div>
+
+
+</div>

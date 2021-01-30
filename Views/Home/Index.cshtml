@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string name = "ZAW";
+    var dateOfBirth = new { Day = 15, Month = 07, Year = 1980 }; 
+    string[] skills = new string[] { "MVC",  "C#", "JQuery", "ASP.NET" };
+}
+
+<div class="text-center">
+    <h1 class="display-4">TPL E-Visitor System</h1>
+    <p>&nbsp;</p>
+    <h3>Welcome! Please sign in here</h3>
+</div>
+<div>&nbsp;</div>
+<div class="text-center">
+ 
+    <div class="row">
+        <div class="col-sm-3"></div>
+        @* <div class="col-sm-6" style="border: 1px solid red;">
+            <div style="float: left;"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("VisitorIn", "Home")'">Visitor In</button></div>
+            <div style="float: right;"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("VisitorOut", "Home")'">Visitor Out</button></div>
+            <div style="clear: both;"></div>
+        </div> *@
+        <div class="col-sm-6" style="border: 0px solid red;">
+            <button type="button" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("VisitorIn", "Home")'">Visitor In</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("VisitorOut", "Home")'">Visitor Out</button>
+        </div>
+        <div class="col-sm-3"></div>
+    </div> 
+    @* @Html.ActionLink("Privacy ...", "Privacy", "Home", new{@class="btn btn-primary btn-lg", @id="idprivacy"}) *@
+
+</div>
+<div>&nbsp;</div>
+<div class="text-center">
+    <p>This is our eVisitor Registration System. (TPL)</p>
+</div>
+
+<div>
+    <h2>@name</h2>
+    <p>Born in year: @dateOfBirth.Year</p>
+    <ul>
+        @foreach(var skill in skills){
+            <li>@skill</li> 
+        }
+    </ul>
+
+</div>

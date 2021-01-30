@@ -1,0 +1,101 @@
+@model m_cls_Employee
+
+@{
+	ViewData["Title"] = "Insert Emp:";
+}
+
+<div>
+    <div><h1 class="display-4">Insert New Employee</h1></div>
+    @* <div><h3 class="message">@ViewBag.Message</h3></div> *@
+
+    @if(@ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>@ViewBag.Message</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <div>&nbsp;</div>
+    <div>
+        <form asp-controller="Employee" asp-action="Insert" method="post">
+            
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="FirstName"></label>
+                    <input type="text" asp-for="FirstName" class="form-control" placeholder=""/>
+                    <span asp-validation-for="FirstName" class="message"></span>
+                </div>
+                <div class="col-6">
+                    <label asp-for="LastName"></label>
+                    <input type="text" asp-for="LastName" class="form-control" placeholder=""/>
+                    <span asp-validation-for="LastName" class="message"></span>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="Title"></label>
+                    <select asp-for="Title" asp-items="@ViewBag.Titles" class="form-control">
+                        <option value="">Please select</option>
+                    </select>
+                    <span asp-validation-for="Title" class="message"></span>
+                </div>
+                <div class="col-6">
+                    <label asp-for="BirthDate"></label>
+                    <input type="date" asp-for="BirthDate" class="form-control"/>
+                    <span asp-validation-for="BirthDate" class="message"></span>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label asp-for="HireDate"></label>
+                    <input type="date" asp-for="HireDate" class="form-control"/>
+                    <span asp-validation-for="HireDate" class="message"></span>
+                </div>
+                <div class="col-6">
+                    <label asp-for="Country"></label>
+                    <select asp-for="Country" asp-items="@ViewBag.Countries" class="form-control">
+                        <option value="">Please select</option>
+                    </select>
+                    <span asp-validation-for="Country" class="message"></span>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label asp-for="Notes"></label>
+                    <textarea asp-for="Notes" rows="5" cols="40" class="form-control" placeholder=""></textarea>
+                    <span asp-validation-for="Notes" class="message"></span>
+                </div>
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="row">
+                <div class="col-12" style="text-align: center;">
+                    <button type="submit" class="btn btn-light">Save</button>
+                </div>
+                @* <div>
+                    @Html.EnumDropDownListFor(model => model.EnumTest, new { @class = "form-control" })
+                    @Html.EnumDropDownListFor(m => m.InquiryType, "-- Please select --")
+                </div> *@
+            </div>
+
+        </form>
+        
+    </div>
+    <div>&nbsp;</div>
+    <div>
+        <partial name="_EmpBacktoList" />
+    </div>
+</div>

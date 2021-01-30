@@ -1,0 +1,15 @@
+@model m_cls_Student
+
+<div>
+    @Html.DropDownListFor(m => m.StudentGender, 
+        new SelectList(Enum.GetValues(typeof(Gender))), 
+        "Select Gender", 
+        new { @class = "form-control" })
+</div>
+<div>&nbsp;</div>
+<div>
+    @Html.DropDownList("StudentGender", 
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender",
+                    new { @class = "form-control" })
+</div>
