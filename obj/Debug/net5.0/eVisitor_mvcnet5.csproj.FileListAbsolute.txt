@@ -90,3 +90,4 @@ D:\Downloads\Udmy\eVisitor_mvcnet5\obj\Debug\net5.0\Razor\Views\Image\Delete.csh
 D:\Downloads\Udmy\eVisitor_mvcnet5\obj\Debug\net5.0\Razor\Views\Image\Index.cshtml.g.cs
 D:\Downloads\Udmy\eVisitor_mvcnet5\obj\Debug\net5.0\Razor\Views\Image\Details.cshtml.g.cs
 D:\Downloads\Udmy\eVisitor_mvcnet5\obj\Debug\net5.0\Razor\Views\Image\Edit.cshtml.g.cs
+D:\Downloads\Udmy\eVisitor_mvcnet5\bin\Debug\net5.0\Dapper.dll

@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eVisitor_mvcnet5.Common;
 using eVisitor_mvcnet5.Models;
+using eVisitor_mvcnet5.Service.IServices;
+using eVisitor_mvcnet5.Service.ServicesRepo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +32,13 @@ namespace eVisitor_mvcnet5
             // added
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBDefaultConnection")));
             services.AddDbContext<AppDbContext2>(options => options.UseSqlServer(Configuration.GetConnectionString("DBDefaultConnection2")));
+
+            // for Dapper
+            services.AddSingleton<IConfiguration>(Configuration);
+            Global.ConnectionString = Configuration.GetConnectionString("DBDefaultConnection2");
+
+            // for Dapper
+            services.AddScoped<IStudentService, StudentServiceRepo>();
 
             services.AddControllersWithViews();
 

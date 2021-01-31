@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+uslaCdNT+bmuTZtOXLr8qwxwx+T5Q1sjN+KA+AQP1nx3+vypZmoSh+6IUtAeqeqReLUY5NWdOKEuHcR1jY2aQ==",
+  "dgSpecHash": "RYo8RXMRo6oItDeTfw35/LIQXR367VhCi2eZwuJHKi4zcv0Kg9jgWFGKCOF+3TMA8tjNA83EqjeLfxg3PnBW/Q==",
   "success": true,
   "projectFilePath": "D:\\Downloads\\Udmy\\eVisitor_mvcnet5\\eVisitor_mvcnet5.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\zaw\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\zaw\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\zaw\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
