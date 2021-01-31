@@ -15,11 +15,10 @@ BEGIN TRAN
 		--	           VALUES(@TeacherId, @FullName, @SubjectName)
 
 
-		SET @TeacherId = (SELECT MAX(TeacherId) FROM tbl_Teacher_D)
-
 		INSERT INTO tbl_Teacher_D  (FullName, SubjectName)
 			           VALUES( @FullName, @SubjectName)
-
+			           
+		SET @TeacherId = (SELECT MAX(TeacherId) FROM tbl_Teacher_D)
 
 		SELECT * FROM tbl_Teacher_D WHERE TeacherId=@TeacherId
 
