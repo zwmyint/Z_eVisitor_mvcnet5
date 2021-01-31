@@ -1,0 +1,75 @@
+public async Task<IEnumerable<Question>> AskAQuestion(string question, int take = 10, int skip = 0)
+{
+    //enforce a hard max limit of 100 results
+    take = Math.Min(take, 100);
+
+    var sql =
+    @"SELECT *
+    FROM
+    PostWithUser
+    WHERE
+    [PostTypeId] = 1
+    AND
+    [Title] LIKE '%@Question%'
+    ORDER BY
+    ViewCount DESC
+
+    OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY;";
+
+    //Our query is going to map 2 models then return a third.
+    //In this case it will map question and user
+    //then use our mapping function to join them together.
+    var questions = await _database.QueryAsync<Question, User, Question>(
+    sql,
+    //This is how we define data relationships with dapper
+    map: Question.UserMap,
+    //These are the inputs that dapper will parameterize
+    param: new { Question = question, Skip = skip, Take = take },
+    //This tells dapper that the second model starts at this column
+    splitOn: "UserId");
+
+    return questions.ToList();
+}
+
+
+public async Task<QuestionDetails> GetQuestionDetails(int questionId)
+{
+    var sql =
+    @"SELECT * FROM PostWithUser WHERE Id = @QuestionId
+    SELECT * FROM PostWithUser WHERE ParentId = @QuestionId";
+
+    var questionDetails = new QuestionDetails();
+    using (var multi = await _database.QueryMultipleAsync(sql, new { QuestionId = questionId }))
+    {
+        questionDetails.Question = multi.Read<Question, User, Question>(Question.UserMap, splitOn: "UserId")
+        .FirstOrDefault();
+
+        if (questionDetails.Question != null)
+        questionDetails.Answers = multi.Read<Answer, User, Answer>(Answer.UserMap, splitOn: "UserId")
+        .ToList();
+    }
+
+    return questionDetails;
+}
+
+
+[Route("/Search")]
+public async Task<IActionResult> Search([FromQuery]string q)
+{
+    var questions = await _questionService.AskAQuestion(q);
+
+    ViewData["Title"] = q;
+
+    return View(questions);
+}
+
+[Route("/QuestionDetails/{id}")]
+public async Task<IActionResult> QuestionDetails(int id)
+{
+    var questionDetails = await _questionService.GetQuestionDetails(id);
+
+    ViewData["Title"] = questionDetails.Question.Title;
+
+    return View(questionDetails);
+}
+

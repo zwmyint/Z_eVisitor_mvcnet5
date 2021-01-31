@@ -41,6 +41,9 @@ namespace eVisitor_mvcnet5
             services.AddScoped<IStudentService, StudentServiceRepo>();
             services.AddScoped<ISchoolService, SchoolServiceRepo>();
 
+            services.AddScoped<IDapper, Dapperr>(); 
+
+
             services.AddControllersWithViews();
 
             
