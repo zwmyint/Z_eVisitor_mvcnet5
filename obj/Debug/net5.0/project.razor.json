@@ -15653,6 +15653,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Downloads\\Udmy\\eVisitor_mvcnet5\\Views\\Company\\index.cshtml",
+      "TargetPath": "Views\\Company\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Downloads\\Udmy\\eVisitor_mvcnet5\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

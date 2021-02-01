@@ -18,6 +18,10 @@ namespace eVisitor_mvcnet5.Models
         public DbSet<m_cls_Transaction> tbl_Transactions { get; set; }
         public DbSet<m_cls_Image> tbl_Images { get; set; }
 
+        // EF DBSet for Dapper test
+        public DbSet<m_cls_Company_D> tbl_Company_D { get; set; }
+
+
         /* protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         modelBuilder.Entity<m_cls_Category>().HasData(

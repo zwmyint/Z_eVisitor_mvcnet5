@@ -43,6 +43,9 @@ namespace eVisitor_mvcnet5
 
             services.AddScoped<IDapper, Dapperr>(); 
 
+            // EF and Dapper test
+            //services.AddScoped<ICompanyService, CompanyServiceRepoEF>(); //EF
+            services.AddScoped<ICompanyService, CompanyServiceRepo>(); //Dapper
 
             services.AddControllersWithViews();
 
