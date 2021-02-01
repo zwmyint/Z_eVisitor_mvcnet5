@@ -62,7 +62,9 @@ namespace eVisitor_mvcnet5.Service.ServicesRepo
             {
                 if(con.State == ConnectionState.Closed) con.Open();
 
-                var oStudent = con.Query<m_cls_Student_D>("SELECT * FROM tbl_Student_D WHERE studentId = " + studentId).ToList();
+                string query = "SELECT * FROM tbl_Student_D WHERE studentId = @studentId";
+
+                var oStudent = con.Query<m_cls_Student_D>(query, new { studentId = studentId}).ToList();
 
                 if (oStudent != null && oStudent.Count() > 0)
                 {

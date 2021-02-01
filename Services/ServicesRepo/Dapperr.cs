@@ -60,8 +60,8 @@ namespace eVisitor_mvcnet5.Service.ServicesRepo
             T result;  
             //using IDbConnection db = new SqlConnection(_config.GetConnectionString(Connectionstring));  
             using IDbConnection db = new SqlConnection(Global.ConnectionString);  
-            //try  
-            //{  
+            try  
+            {  
                 if (db.State == ConnectionState.Closed)  
                     db.Open();  
   
@@ -74,18 +74,18 @@ namespace eVisitor_mvcnet5.Service.ServicesRepo
                 catch (Exception ex)  
                 {  
                     tran.Rollback();  
-                    throw ex;  
+                    throw new Exception ("Put more context here", ex);  
                 }  
-            //}  
-            //catch (Exception ex)  
-            //{  
-            //    throw ex;  
-            //}  
-            //finally  
-            //{  
-            //    if (db.State == ConnectionState.Open)  
-            //        db.Close();  
-            //}  
+            }  
+            catch (Exception ex)  
+            {  
+                throw new Exception ("Put more context here", ex);
+            }  
+            finally  
+            {  
+                if (db.State == ConnectionState.Open)  
+                    db.Close();  
+            }  
   
             return result;  
             
@@ -97,8 +97,8 @@ namespace eVisitor_mvcnet5.Service.ServicesRepo
             T result;  
             //using IDbConnection db = new SqlConnection(_config.GetConnectionString(Connectionstring));  
             using IDbConnection db = new SqlConnection(Global.ConnectionString);  
-            //try  
-            //{  
+            try  
+            {  
                 if (db.State == ConnectionState.Closed)  
                     db.Open();  
   
@@ -111,18 +111,17 @@ namespace eVisitor_mvcnet5.Service.ServicesRepo
                 catch (Exception ex)  
                 {  
                     tran.Rollback();  
-                    throw ex;  
+                    throw new Exception ("Put more context here", ex);
                 }  
-            //}  
-            //catch (Exception ex)  
-            //{  
-            //    throw ex;  
-            //}  
-            //finally  
-            //{  
-            //    if (db.State == ConnectionState.Open)  
-            //       db.Close();  
-            //}  
+            }  
+            catch (Exception ex)  
+            {  
+                throw new Exception ("Put more context here", ex);
+            }  
+            {  
+                if (db.State == ConnectionState.Open)  
+                   db.Close();  
+            }  
   
             return result;
 
